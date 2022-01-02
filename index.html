@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Control de Presupuesto</title>
+  <link rel="shortcut icon" type="image/jpg" href="images/money-growth.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="scripts/script.js"></script>
+</head>
+
+<body>
+  <div class="general-container">
+    <!-- ////////////////////////// -->
+    <!-- PANTALLA PRINCIPAL -->
+    <form class="general-presupuesto">
+      <h3 class="presupuesto-titulo">ERROR</h3>
+      <button class="btn btn-edit-title" data-modal-target="#modal-title" id="ingreso-name"><i
+          class="fas fa-pen"></i></button>
+      <p class="presupuesto-resto" id="main-presupuesto-resto">13000</p>
+
+      <p class="presupuesto-gastado" id="main-gastado">0</p>
+
+      <p class="presupuesto-base" id="main-presupuesto-base">22500</p>
+
+      <button class="btn btn-edit-base" data-modal-target="#modal-monto-base" id="ingreso-base"><i
+          class="fas fa-pen"></i></button>
+      <button class="btn btn-shopping" data-modal-target="#modal-compra-nueva" id="nueva-compra">
+        <i class="fas fa-shopping-cart"></i>
+      </button>
+    </form>
+  </div>
+  <!-- ////////////////////////// -->
+  <!-- LISTA DE COMPRAS -->
+  <div class="compras-container">
+    <ul class="compras-list">
+    </ul>
+  </div>
+
+  <!-- ////////////////////////// -->
+  <!-- OVERLAY -->
+  <div id="overlay"></div>
+
+  <!-- ////////////////////////// -->
+  <!-- MODAL INGRESO NOMBRE -->
+  <div class="modal general-container modal-container" id="modal-title">
+    <form class="form-container">
+      <input type="text" class="modal-input" placeholder="Ingrese titulo" title="Titulo" id="input-title" maxlength="15" />
+      <button class="btn modal-btn btn-margin-close" data-close-button id="title-btn-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="btn modal-btn btn-margin-ok" data-close-button id="title-btn-ok">
+        <i class="fas fa-check"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- <div class="compra-nueva">
+      <li class="compra-monto">1000</li>
+      <li class="compra-item">chino</li>
+      <button class="trash-btn"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="compra-nueva">
+      <li class="compra-monto">2000</li>
+      <li class="compra-item">compra 2</li>
+      <button class="trash-btn"><i class="fas fa-trash"></i></button>
+    </div> -->
+
+  <!-- ////////////////////////// -->
+  <!-- MODAL INGRESO MONTO BASE -->
+  <div class="modal general-container modal-container" id="modal-monto-base">
+    <form class="form-container">
+      <input type="text" class="modal-input" placeholder="Ingrese monto base" id="input-monto-base" maxlength="7" />
+      <button class="btn modal-btn btn-margin-close" data-close-button id="base-btn-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="btn modal-btn btn-margin-ok" data-close-button id="base-btn-ok">
+        <i class="fas fa-check"></i>
+      </button>
+    </form>
+  </div>
+  <!-- ////////////////////////// -->
+  <!-- MODAL INGRESO DE COMPRAS -->
+  <div class="modal general-container modal-container" id="modal-compra-nueva">
+    <form class="form-container">
+      <input type="text" class="modal-input" placeholder="ingrese producto" id="input-compra-name" maxlength="20" />
+      <input type="text" class="modal-input" placeholder="ingrese precio" id="input-compra-monto" />
+      <button class="btn modal-btn btn-margin-close" data-close-button id="compra-btn-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="btn modal-btn btn-margin-ok" data-close-button id="compra-btn-ok">
+        <i class="fas fa-check"></i>
+      </button>
+    </form>
+  </div>
+  <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/slidicon" title="Slidicon">Slidicon</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+</body>
+
+</html>
