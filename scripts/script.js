@@ -75,25 +75,25 @@ $(document).ready(function () {
     /* /////////////////////////////// */
     /* FUNCION TOMAR TITULO DEL LOCAL STORAGE */
     function updateTitle() {
-        let mainTitle;
-        if (localStorage.getItem('mainTitle') === null) {
-            mainTitle = []
+        let mainTitle1;
+        if (localStorage.getItem('mainTitle1') === null) {
+            mainTitle1 = []
         } else {
-            mainTitle = JSON.parse(localStorage.getItem('mainTitle'))
+            mainTitle1 = JSON.parse(localStorage.getItem('mainTitle1'))
         }
-        $('.presupuesto-titulo')[0].innerHTML = mainTitle
+        $('.presupuesto-titulo')[0].innerHTML = mainTitle1
     }
     /* /////////////////////////////// */
     /* FUNCION TOMAR MONTO BASE DEL LOCAL STORAGE */
     function updateMonto() {
-        let montoBase;
-        if (localStorage.getItem('montoBase') === null) {
-            montoBase = []
+        let montoBase1;
+        if (localStorage.getItem('montoBase1') === null) {
+            montoBase1 = []
         } else {
-            montoBase = JSON.parse(localStorage.getItem('montoBase'))
+            montoBase1 = JSON.parse(localStorage.getItem('montoBase1'))
         }
-        $('.presupuesto-base')[0].innerHTML = montoBase
-        monto_base = montoBase
+        $('.presupuesto-base')[0].innerHTML = montoBase1
+        monto_base = montoBase1
         resto = parseInt($('#main-presupuesto-resto')[0].innerText)
 
         if (parseInt(resto) < 0) {
@@ -138,13 +138,13 @@ $(document).ready(function () {
             monto_base = parseInt(input_monto_base.value)
             let resto_actualizado
             let monto_actualizado = 0
-            let compras
-            if (localStorage.getItem('compras') === null) {
-                compras = []
+            let compras1
+            if (localStorage.getItem('compras1') === null) {
+                compras1 = []
             } else {
-                compras = JSON.parse(localStorage.getItem('compras'))
+                compras1 = JSON.parse(localStorage.getItem('compras1'))
             }
-            compras.forEach(function (compra) {
+            compras1.forEach(function (compra) {
                 parseInt(compra[1])
                 monto_actualizado += parseInt(compra[1])
             })
@@ -222,13 +222,13 @@ $(document).ready(function () {
 
             let resto_actualizado
             let monto_actualizado = 0
-            let compras
-            if (localStorage.getItem('compras') === null) {
-                compras = []
+            let compras1
+            if (localStorage.getItem('compras1') === null) {
+                compras1 = []
             } else {
-                compras = JSON.parse(localStorage.getItem('compras'))
+                compras1 = JSON.parse(localStorage.getItem('compras1'))
             }
-            compras.forEach(function (compra) {
+            compras1.forEach(function (compra) {
                 parseInt(compra[1])
                 monto_actualizado += parseInt(compra[1])
             })
@@ -277,25 +277,25 @@ $(document).ready(function () {
     }
     /* BORRAR COSAS DE LA MEMORIA LOCAL */
     function removeCompraLocal(compra) {
-        let compras
+        let compras1
 
-        if (localStorage.getItem('compras') === null) {
-            compras = []
+        if (localStorage.getItem('compras1') === null) {
+            compras1 = []
         } else {
-            compras = JSON.parse(localStorage.getItem('compras'))
+            compras1 = JSON.parse(localStorage.getItem('compras1'))
         }
 
         console.log(compra.children[1].innerHTML)
         let monto_compra_borrar = compra.children[0].innerHTML
         let nombre_compra_borrar = compra.children[1].innerHTML
-        console.log(compras)
+        console.log(compras1)
         let i = 0
 
-        for (let j = 0; j < compras.length; ++j) {
+        for (let j = 0; j < compras1.length; ++j) {
             // console.log('++++++++++++ ' + compras[j][0])
             // console.log('++++++++++++ ' + compras[j][1])
 
-            if (compras[j][1] == monto_compra_borrar && compras[j][0] == nombre_compra_borrar) {
+            if (compras1[j][1] == monto_compra_borrar && compras1[j][0] == nombre_compra_borrar) {
                 break
             }
             i++
@@ -307,18 +307,18 @@ $(document).ready(function () {
         //         console.log('hola')
         //     }
         // })
-        compras.splice(i, 1)
-        localStorage.setItem('compras', JSON.stringify(compras))
+        compras1.splice(i, 1)
+        localStorage.setItem('compras1', JSON.stringify(compras1))
 
         updateMonto()
         let resto_actualizado
         let monto_actualizado = 0
-        if (localStorage.getItem('compras') === null) {
-            compras = []
+        if (localStorage.getItem('compras1') === null) {
+            compras1 = []
         } else {
-            compras = JSON.parse(localStorage.getItem('compras'))
+            compras1 = JSON.parse(localStorage.getItem('compras1'))
         }
-        compras.forEach(function (compra) {
+        compras1.forEach(function (compra) {
             parseInt(compra[1])
             monto_actualizado += parseInt(compra[1])
         })
@@ -353,28 +353,28 @@ $(document).ready(function () {
     /* ///////////////////////// */
     /* LOCAL STORAGE SAVE COMPRAS*/
     function saveCompraLocal(compra, monto) {
-        let compras
+        let compras1
 
-        if (localStorage.getItem('compras') === null) {
-            compras = []
+        if (localStorage.getItem('compras1') === null) {
+            compras1 = []
         } else {
-            compras = JSON.parse(localStorage.getItem('compras'))
+            compras1 = JSON.parse(localStorage.getItem('compras1'))
         }
-        compras.push([compra, monto])
-        localStorage.setItem('compras', JSON.stringify(compras))
+        compras1.push([compra, monto])
+        localStorage.setItem('compras1', JSON.stringify(compras1))
     }
 
     /* ///////////////////////// */
     /* LOCAL STORAGE GET COMPRAS */
     function getCompras() {
-        let compras
+        let compras1
         let montoTotal = 0
-        if (localStorage.getItem('compras') === null) {
-            compras = []
+        if (localStorage.getItem('compras1') === null) {
+            compras1 = []
         } else {
-            compras = JSON.parse(localStorage.getItem('compras'))
+            compras1 = JSON.parse(localStorage.getItem('compras1'))
         }
-        compras.forEach(function (compra, monto) {
+        compras1.forEach(function (compra, monto) {
             // CREAR NUEVA COMPRA
             const compraNueva = document.createElement('div')
             compraNueva.classList.add('compra-nueva')
@@ -425,17 +425,17 @@ $(document).ready(function () {
 
         /* ///////////////////////// */
         /* LOCAL STORAGE REFRESH SUMA TOTAL Y RESTO  */
-        compras.forEach(function (compra) {
+        compras1.forEach(function (compra) {
             montoTotal += parseInt(compra[1])
         })
         $('#main-gastado')[0].innerText = montoTotal
-        let montoBase
-        if (localStorage.getItem('montoBase') === null) {
-            montoBase = []
+        let montoBase1
+        if (localStorage.getItem('montoBase1') === null) {
+            montoBase1 = []
         } else {
-            montoBase = JSON.parse(localStorage.getItem('montoBase'))
+            montoBase1 = JSON.parse(localStorage.getItem('montoBase1'))
         }
-        $('#main-presupuesto-resto')[0].innerText = parseInt(montoBase - $('#main-gastado')[0].innerText)
+        $('#main-presupuesto-resto')[0].innerText = parseInt(montoBase1 - $('#main-gastado')[0].innerText)
 
         updateMonto()
 
@@ -461,21 +461,21 @@ $(document).ready(function () {
 
     /* ///////////////////////// */
     /* LOCAL STORAGE SAVE TITULO */
-    function saveMainTitle(title) {
-        let mainTitle;
-        if (localStorage.getItem('mainTitle') === null) {
-            mainTitle = []
+    function saveMainTitle(title1) {
+        let mainTitle1;
+        if (localStorage.getItem('mainTitle1') === null) {
+            mainTitle1 = []
         } else {
-            mainTitle = JSON.parse(localStorage.getItem('mainTitle'))
+            mainTitle1 = JSON.parse(localStorage.getItem('mainTitle1'))
         }
         localStorage.removeItem('mainTitle')
         if (localStorage.getItem('mainTitle') === null) {
-            mainTitle = []
+            mainTitle1 = []
         } else {
-            mainTitle = JSON.parse(localStorage.getItem('mainTitle'))
+            mainTitle1 = JSON.parse(localStorage.getItem('mainTitle1'))
         }
-        mainTitle.push([title])
-        localStorage.setItem('mainTitle', JSON.stringify(title))
+        mainTitle1.push([title1])
+        localStorage.setItem('mainTitle1', JSON.stringify(title1))
     }
 
     $('#title-btn-ok').click(function () {
@@ -485,20 +485,20 @@ $(document).ready(function () {
     /* ///////////////////////// */
     /* LOCAL STORAGE SAVE MONTO BASE */
     function saveMontoBase(monto) {
-        let montoBase;
-        if (localStorage.getItem('montoBase') === null) {
-            montoBase = []
+        let montoBase1;
+        if (localStorage.getItem('montoBase1') === null) {
+            montoBase1 = []
         } else {
-            montoBase = JSON.parse(localStorage.getItem('montoBase'))
+            montoBase1 = JSON.parse(localStorage.getItem('montoBase1'))
         }
-        localStorage.removeItem('montoBase')
-        if (localStorage.getItem('montoBase') === null) {
-            montoBase = []
+        localStorage.removeItem('montoBase1')
+        if (localStorage.getItem('montoBase1') === null) {
+            montoBase1 = []
         } else {
-            montoBase = JSON.parse(localStorage.getItem('montoBase'))
+            montoBase1 = JSON.parse(localStorage.getItem('montoBase1'))
         }
-        montoBase.push([monto])
-        localStorage.setItem('montoBase', JSON.stringify(monto))
+        montoBase1.push([monto])
+        localStorage.setItem('montoBase1', JSON.stringify(monto))
 
 
         updateMonto()
