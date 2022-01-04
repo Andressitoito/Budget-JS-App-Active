@@ -112,8 +112,7 @@ $(document).ready(function () {
         }
     }
 
-    console.log($('#main-presupuesto-resto')[0])
-    console.log(resto)
+
 
     /* /////////////////////////////// */
     /* EVENTS LISTENERS Y FUNCIONES*/
@@ -134,45 +133,45 @@ $(document).ready(function () {
         //     alert('ingrese un numero valido')
         //     monto_base = 0
         // } else {}
-            updateMonto()
-            monto_base = parseInt(input_monto_base.value)
-            let resto_actualizado
-            let monto_actualizado = 0
-            let compras1
-            if (localStorage.getItem('compras1') === null) {
-                compras1 = []
-            } else {
-                compras1 = JSON.parse(localStorage.getItem('compras1'))
-            }
-            compras1.forEach(function (compra) {
-                parseInt(compra[1])
-                monto_actualizado += parseInt(compra[1])
-            })
-            $('#main-presupuesto-base')[0].innerText = $('#input-monto-base')[0].value
-            $('#main-gastado')[0].innerText = monto_actualizado
-            resto_actualizado = monto_base - monto_actualizado
-            $('#main-presupuesto-resto')[0].innerText = resto_actualizado
+        updateMonto()
+        monto_base = parseInt(input_monto_base.value)
+        let resto_actualizado
+        let monto_actualizado = 0
+        let compras1
+        if (localStorage.getItem('compras1') === null) {
+            compras1 = []
+        } else {
+            compras1 = JSON.parse(localStorage.getItem('compras1'))
+        }
+        compras1.forEach(function (compra) {
+            parseInt(compra[1])
+            monto_actualizado += parseInt(compra[1])
+        })
+        $('#main-presupuesto-base')[0].innerText = $('#input-monto-base')[0].value
+        $('#main-gastado')[0].innerText = monto_actualizado
+        resto_actualizado = monto_base - monto_actualizado
+        $('#main-presupuesto-resto')[0].innerText = resto_actualizado
 
-            updateMonto()
-
-
-            if (parseInt(resto) < 0) {
-                $('#main-presupuesto-resto').addClass('numero-negativo')
-                $('#main-presupuesto-resto').removeClass('numero-positivo')
-            } else {
-                $('#main-presupuesto-resto').addClass('numero-positivo')
-                $('#main-presupuesto-resto').removeClass('numero-negativo')
-            }
-            if (parseInt($('#main-gastado')[0].innerText) > 0) {
-                $('#main-gastado').addClass('numero-negativo')
-                $('#main-gastado').removeClass('numero-positivo')
-            } else {
-                $('#main-gastado').addClass('numero-positivo')
-                $('#main-gastado').removeClass('numero-negativo')
-            }
+        updateMonto()
 
 
-       
+        if (parseInt(resto) < 0) {
+            $('#main-presupuesto-resto').addClass('numero-negativo')
+            $('#main-presupuesto-resto').removeClass('numero-positivo')
+        } else {
+            $('#main-presupuesto-resto').addClass('numero-positivo')
+            $('#main-presupuesto-resto').removeClass('numero-negativo')
+        }
+        if (parseInt($('#main-gastado')[0].innerText) > 0) {
+            $('#main-gastado').addClass('numero-negativo')
+            $('#main-gastado').removeClass('numero-positivo')
+        } else {
+            $('#main-gastado').addClass('numero-positivo')
+            $('#main-gastado').removeClass('numero-negativo')
+        }
+
+
+
 
     }
     )
@@ -257,21 +256,46 @@ $(document).ready(function () {
         }
     }
 
+    var delrCompra = ''
+    // if ($('#eliminar-compra-btn-test').click == $(this)[0].innerHTML) {
+
+    console.log('culo')
+
+    $('#eliminar-compra-btn-test').click(function () {
+        delrCompra = true;
+        console.log(delrCompra)
+    });
+    console.log(delrCompra[0])
+
+    if (delrCompra == true) {
+        console.log('compracompra')
+    }
+
     /* ///////////////////////// */
     /* BORRAR COMPRAS */
+
     /* BORRAR COSAS DEL CSS VISUALMENTE */
     compras_list.addEventListener('click', deleteCompra)
+
     function deleteCompra(event) {
+        console.log('culoioio')
         const item = event.target
+
         if (item.classList[0] === 'trash-btn') {
-            const compra = item.parentElement
-            // console.log(item.parentElement)
-            /* ADD ANIMATION */
-            compra.classList.add('fall')
-            removeCompraLocal(compra)
-            /* REMOVE ITEM */
-            compra.addEventListener('transitionend', function () {
-                compra.remove()
+            $('#modal-eliminar-compra').addClass('active')
+            overlay.classList.add('active')
+
+            $('#eliminar-compra-btn-ok').click(function () {
+
+                const compra = item.parentElement
+                // console.log(item.parentElement)
+                /* ADD ANIMATION */
+                compra.classList.add('fall')
+                removeCompraLocal(compra)
+                /* REMOVE ITEM */
+                compra.addEventListener('transitionend', function () {
+                    compra.remove()
+                })
             })
         }
     }
@@ -285,10 +309,10 @@ $(document).ready(function () {
             compras1 = JSON.parse(localStorage.getItem('compras1'))
         }
 
-        console.log(compra.children[1].innerHTML)
+        // console.log(compra.children[1].innerHTML)
         let monto_compra_borrar = compra.children[0].innerHTML
         let nombre_compra_borrar = compra.children[1].innerHTML
-        console.log(compras1)
+        // console.log(compras1)
         let i = 0
 
         for (let j = 0; j < compras1.length; ++j) {
