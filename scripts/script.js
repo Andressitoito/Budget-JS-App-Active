@@ -112,8 +112,6 @@ $(document).ready(function () {
         }
     }
 
-
-
     /* /////////////////////////////// */
     /* EVENTS LISTENERS Y FUNCIONES*/
     /* MODAL TITULO */
@@ -122,9 +120,6 @@ $(document).ready(function () {
         presupuesto_titulo.innerHTML = input_title.value
     }
     )
-
-    /* delete new branch */
-
 
     /* MODAL MONTO BASE */
     base_btn_ok.addEventListener('click', () => {
@@ -169,9 +164,6 @@ $(document).ready(function () {
             $('#main-gastado').addClass('numero-positivo')
             $('#main-gastado').removeClass('numero-negativo')
         }
-
-
-
 
     }
     )
@@ -256,20 +248,7 @@ $(document).ready(function () {
         }
     }
 
-    var delrCompra = ''
-    // if ($('#eliminar-compra-btn-test').click == $(this)[0].innerHTML) {
 
-    console.log('culo')
-
-    $('#eliminar-compra-btn-test').click(function () {
-        delrCompra = true;
-        console.log(delrCompra)
-    });
-    console.log(delrCompra[0])
-
-    if (delrCompra == true) {
-        console.log('compracompra')
-    }
 
     /* ///////////////////////// */
     /* BORRAR COMPRAS */
@@ -370,9 +349,6 @@ $(document).ready(function () {
 
 
     }
-    // console.log(parseInt($('#main-presupuesto-resto')[0].innerText))
-
-
 
     /* ///////////////////////// */
     /* LOCAL STORAGE SAVE COMPRAS*/
@@ -442,8 +418,6 @@ $(document).ready(function () {
                 $('#main-gastado').addClass('numero-positivo')
                 $('#main-gastado').removeClass('numero-negativo')
             }
-
-
 
         })
 
