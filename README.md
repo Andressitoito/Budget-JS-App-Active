@@ -1,2 +1,2 @@
 # Budget-JS-App-Active
- App actualmente en uso
+ App actualmente en desuso
